@@ -21,11 +21,9 @@
             success: function(obj){
                 if (obj['error'] == '1') {
                     alert(obj['message']);
-
                 } else {
                     n = true;
                     alert(obj['message']);
-
                 }
             }
         });
