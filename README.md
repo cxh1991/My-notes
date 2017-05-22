@@ -4,8 +4,10 @@
 因为它返回的是ajax中的success方法，而不是checkForm()。
 因此可以设置一个全局变量用来做判断，实现停止的效果。
 注意：ajax一定要是同步的。
+<code>
 <form action="/1/mobile/codeJsLogin" onSubmit="return checkForm();" id="login_form" method="post">
-<script>
+<code>
+<code>
     function checkForm(){
         var cname = $("#cname").val();
         var randomSms = $("#randomSms").val();
@@ -34,6 +36,6 @@
             return false;
         }
     }
-</script>
+<code>
 总结：
 重要的两个点：异步请求  +  全局变量的判断
