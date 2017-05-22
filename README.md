@@ -6,8 +6,6 @@
 注意：ajax一定要是同步的。
 <pre>
 <form action="/1/mobile/codeJsLogin" onSubmit="return checkForm();" id="login_form" method="post"></form>
-</pre>
-<pre>
     function checkForm(){
         var cname = $("#cname").val();
         var randomSms = $("#randomSms").val();
