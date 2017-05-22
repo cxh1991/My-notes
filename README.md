@@ -5,8 +5,8 @@
 因此可以设置一个全局变量用来做判断，实现停止的效果。
 注意：ajax一定要是同步的。
 <code>
-<form action="/1/mobile/codeJsLogin" onSubmit="return checkForm();" id="login_form" method="post">
-<code>
+<form action="/1/mobile/codeJsLogin" onSubmit="return checkForm();" id="login_form" method="post"></form>
+</code>
 <code>
     function checkForm(){
         var cname = $("#cname").val();
@@ -29,13 +29,12 @@
                 }
             }
         });
-　　　　//全局判断
         if(n) {
              return true;
         }else{
             return false;
         }
     }
-<code>
+</code>
 总结：
 重要的两个点：异步请求  +  全局变量的判断
