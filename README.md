@@ -36,4 +36,26 @@
 总结：
 重要的两个点：异步请求  +  全局变量的判断
 
-2.在使用jq1.7版本的的情况下，用live绑定第二次触发的事件无效，解决办法是，用jq1.7以上的版本on事件代替
+2.在使用jq1.7版本的的情况下，用live绑定第二次触发的事件无效，解决办法是，用jq1.7以上的版本on事件代替。
+3.<pre><code>
+function setStorage(key,value){
+        if(!window.localStorage){
+            alert("浏览器不支持localstorage");
+            return false;
+        }else{
+            var storage=window.localStorage;
+            //写入字段
+            storage.setItem(key,value);
+        }
+    }
+    function getStorage(key){
+        if(!window.localStorage){
+            alert("浏览器不支持localstorage");
+        }else{
+            var storage=window.localStorage;
+            var key=storage.getItem(key);
+//            console.log(key);
+            return key;
+        }
+}
+</code></pre>
