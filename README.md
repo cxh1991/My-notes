@@ -60,3 +60,30 @@ function setStorage(key,value){
 }
 </code>
 </pre>
+4.解决ios微信返回上一个页面不刷新
+<pre>
+<code>
+(function() {
+    pushHistory();
+    var bool = false;
+    setTimeout(function() {
+        bool = true;
+    }, 1500);
+    window.addEventListener("popstate", function(e) {
+        if (bool) {
+            location.href = '#';
+        }
+        pushHistory();
+
+    }, false);
+});
+
+function pushHistory() {
+    var state = {
+        title: "title",
+        url: "#"
+    };
+    window.history.pushState(state, "title", "#");
+}
+</code>
+</pre>
