@@ -87,3 +87,4 @@ function pushHistory() {
 }
 </code>
 </pre>
+4.vue.js如何在标签属性中插入变量参数  =>  v-bind:属性=“ ‘字符串’+自定义变量名”
