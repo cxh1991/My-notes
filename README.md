@@ -122,3 +122,36 @@ function get(key,exp)//exp是设置的过期时间
   }
 }
 ```
+8.验证
+```javascript
+        var is = 0;
+        if (adviserAddWorld == '') {
+            $('.error-text3').show();
+            is = 1;
+        } else {
+            $('.error-text3').hide();
+        }
+        if (adviserAddName == '') {
+            $('.error-text4').show();
+            is = 1;
+        } else {
+            $('.error-text4').hide();
+        }
+        if (adviserAddMail == '' || !regEmail.test(adviserAddMail)) {
+            $('.error-text5').show();
+            is = 1;
+        } else {
+            $('.error-text5').hide();
+        }
+        if (adviserAddPassword == '') {
+            $('.error-text6').show();
+            is = 1;
+        } else {
+            $('.error-text6').hide();
+        }
+        if(is === 1){
+        return;
+        }else{
+           ////////
+        }
+```
