@@ -155,3 +155,45 @@ function get(key,exp)//exp是设置的过期时间
            ////////
         }
 ```
+9.价格实时计算
+```javascript
+   var ss = 0;
+    var pricet = [];
+
+    function cha() {
+        var sum = 0; // 年计算
+        var daySum = 0; // 天计算
+        pricet.length = 0;
+        ss = 0;
+        $(".current-and-price").html('');
+        $("input[type='checkbox']:checked").each(function() {
+            var ssa = parseInt($(this).parents('.display-goods-li').find('.totalPrice').text());
+            var repeatCheck = $(this).parents(".shangpin-hunhe.ertou").find(".shangpin-ming input").val();
+            var repeatCheckName = $(this).parents(".shangpin-hunhe.ertou").find(".shangpin-ming input").attr("name");
+            var termType = $(this).parents(".shangpin-hunhe.ertou").find(".termType").val();
+            pricet.push(ssa)
+            if (termType == 4) {
+                daySum += parseInt(termType);
+                $(".xinzeng-day").show();
+                $(".addday").show();
+
+            } else {
+                sum += parseInt(repeatCheck);
+                $('.addyear').show();
+                $('.xinzeng-year').show();
+
+            }
+
+        })
+        $(".xinzeng-year").text(sum);
+        $(".xinzeng-day").text(daySum);
+        for (var i = 0; i < pricet.length; i++) {
+            ss += pricet[i];
+        }
+        // console.log(pricet)
+        // console.log(ss)
+        var span = '<span>原价：￥<span class="data-discount">' + ss + '</span></span>';
+        $(".current-and-price").append(span);
+
+    }
+```
