@@ -245,3 +245,15 @@ function get(key,exp)//exp是设置的过期时间
         }
     })
 ```
+11.
+        var a = [];
+		$('ul li').each(function(i,v){
+			var productId = $(v).attr('productId');
+			var totalAmount = $(v).attr('totalAmount');
+			var offlineTime = $(v).attr('offlineTime');
+			a.push({
+				productId:productId,
+				totalAmount:totalAmount,
+				offlineTime:offlineTime
+			})
+		})
