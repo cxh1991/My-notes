@@ -197,3 +197,51 @@ function get(key,exp)//exp是设置的过期时间
 
     }
 ```
+10.返回上页记住上页入口
+```javascript
+                <ul class="order-tab-ul">
+                    <li class="skygreen indexN1" indexN='num1'>全部订单</li>
+                    <li class="indexN2" id="sta-li" indexN='num2'>待支付<i class="status_i">(<span id="status_nopay">0</span>)</i></li>
+                    <input type="text" id="status-hide" style="display: none;">
+                    <li class="indexN3" indexN='num3'>已支付</li>
+                    <li class="indexN4" indexN='num4'>支付超时</li>
+                    <li class="indexN5" indexN='num5'>已撤单</li>
+                </ul>
+                
+                 var strStoreDate = window.localStorage ? localStorage.getItem("indexN") : Cookie.read("indexN");
+        if(!strStoreDate){
+               $('.indexN1').trigger('click');
+        }else{
+        switch (strStoreDate) {
+            case 'num1':
+                indexNf('.indexN1');
+                break;
+            case 'num2':
+                indexNf('.indexN2');
+                break;
+            case 'num3':
+                indexNf('.indexN3');
+                break;
+            case 'num4':
+                indexNf('.indexN4');
+                break;
+            case 'num5':
+                indexNf('.indexN5');
+                break;
+        }
+
+        function indexNf(obj) {
+           $(obj).trigger('click');
+        }
+        
+         $('.order-tab-ul li').click(function() {
+        $(this).addClass('skygreen').siblings('li').removeClass('skygreen')
+        var $index = $(this).index();
+        indexN = $(this).attr('indexN');
+        if (window.localStorage) {
+            localStorage.setItem("indexN", indexN);
+        } else {
+            Cookie.write("indexN", indexN);
+        }
+    })
+```
