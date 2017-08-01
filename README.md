@@ -259,19 +259,9 @@ function get(key,exp)//exp是设置的过期时间
 			})
 		})
 		```
-12.
+12.微信内置浏览器浏览H5页面弹出的键盘遮盖文本框的解决办法
 ```javascript
-微信内置浏览器浏览H5页面弹出的键盘遮盖文本框的解决办法
- 
-
-最近在做微信公众号的内嵌页面，发现点击输入框时键盘盖住文本框，找到一段代码解决了这个问题。
-
-iOS和android手机都已亲测，需要的可以直接拷贝到代码中使用。
-
-js代码如下：
-
 $(function () {
-//微信内置浏览器浏览H5页面弹出的键盘遮盖文本框的解决办法 
 window.addEventListener("resize", function () {
 if (document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "TEXTAREA") {
 window.setTimeout(function () {
@@ -280,4 +270,38 @@ document.activeElement.scrollIntoViewIfNeeded();
 }
 })
 })
+```
+13.
+```javascript
+mounted: function() {
+        var storage = window.localStorage;
+        var zh = storage.getItem('zh');
+        var en = storage.getItem('en');
+       
+        if(!zh && !en){
+             storage.setItem("zh", 1);
+        }
+        if (zh) {
+             storage.removeItem("en", 1);
+        }
+        if (en) {
+             storage.removeItem("zh", 1);
+        }
+    },
+     methods: {
+        changeLang1: function(lg) {
+            setCookie("lang", lg, 365);
+            var storage = window.localStorage;
+            storage.setItem("zh", 1);
+            storage.removeItem("en");
+            location.reload();
+        },
+        changeLang2: function(lg) {
+            setCookie("lang", lg, 365);
+            var storage = window.localStorage;
+            storage.setItem("en", 1);
+            storage.removeItem("zh");
+            location.reload()
+        }
+     }
 ```
