@@ -271,7 +271,7 @@ document.activeElement.scrollIntoViewIfNeeded();
 })
 })
 ```
-13.
+13.中英文切换
 ```javascript
 mounted: function() {
         var storage = window.localStorage;
@@ -304,4 +304,26 @@ mounted: function() {
             location.reload()
         }
      }
+```
+14.h5上传文件并打开
+```javascript
+  <input type="file" id="input">
+  <span id="preview"></span>
+
+(function(){
+  var input = document.querySelector('#input');
+  var span = document.querySelector('#preview');
+  input.addEventListener('change', function(e){
+    handFile(e.target.files[0]);
+  });
+ 
+  function handFile(file){
+    console.log('hand');
+    var reader = new FileReader();
+    reader.onload = function(e){
+      span.innerText = e.target.result;
+    };
+    reader.readAsText(file);
+  }
+})();
 ```
