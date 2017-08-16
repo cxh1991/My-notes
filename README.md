@@ -327,3 +327,38 @@ mounted: function() {
   }
 })();
 ```
+15.json转化
+```javascript
+var arr = [{
+    "aaa": {
+        "name": "小敏",
+        "price": "18",
+        "count": 2,
+        "num": 5
+    },
+    "bbb": {
+        "name": "小李",
+        "price": "18",
+        "count": 1,
+        "num": 11
+    },
+    "ccc": {
+        "name": "小华",
+        "price": "18",
+        "count": 1,
+        "num": 18
+    }
+}]
+var arr1 = [
+      {"id":"aaa","count":2},
+      {"id":"bbb","count":1},
+      {"id":"ccc","count":1}
+]
+var newArr = [];
+for(var tmp in arr){
+    for(var key in arr[tmp]){
+        console.log(key);
+        newArr.push({"id":key,"count":arr[tmp][key].count});
+    }
+}
+```
