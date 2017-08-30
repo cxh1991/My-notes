@@ -381,3 +381,8 @@ function get(key,exp)//exp是设置的过期时间
   }
 }
 ```
+17.字母中文a-z 排序
+```javascript
+var arr = [9,8,7,6,5,1,'在', '我', '里', '阿','z','a','h','m'];
+arr.sort(function(a,b){return a.toString().localeCompare(b)}) 
+```
