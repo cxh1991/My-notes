@@ -386,3 +386,7 @@ function get(key,exp)//exp是设置的过期时间
 var arr = [9,8,7,6,5,1,'在', '我', '里', '阿','z','a','h','m'];
 arr.sort(function(a,b){return a.toString().localeCompare(b)}) 
 ```
+18.js中使用new Date(str)创建时间对象不兼容firefox和ie的解决方式
+```javascript
+var date = new Date(str.replace("-", "/").replace("-", "/"));
+```
