@@ -419,4 +419,5 @@ var date = new Date(str.replace("-", "/").replace("-", "/"));
              meTextObj[sameIndexArr[j]].status = false;
            }
         }
+	console.log(meTextObj)
 ```
