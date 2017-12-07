@@ -390,3 +390,33 @@ arr.sort(function(a,b){return a.toString().localeCompare(b)})
 ```javascript
 var date = new Date(str.replace("-", "/").replace("-", "/"));
 ```
+
+19.     给两个数组相同元素转对象加个标识（小程序）
+```javascript
+        // var p2 = "hello world good for you that's impossible heyhey";
+        // var meText = "hello good day for your ok you are right";
+   
+        var p2 = app.globalData.testResultInfo.bd_sentence;
+        var meText = app.globalData.testResultInfo.sentence;
+        console.log("from bd:"+p2);
+        console.log("standard:" + meText);
+        var sameIndex = util.LCS(p2, meText); //0 2 3 4
+        function trim(str) {
+            return str.replace(/(^\s*)|(\s*$)/g, "");
+        }
+        var sameIndexArr = trim(sameIndex).split(' '); // ["0", "2", "3", "4"]
+        var meTextArr = meText.split(' '); //标准字符串
+        var meTextObj = []; //返回一个对象
+        for(let i  = 0; i < meTextArr.length; i++)
+        {
+            let temp = {'text':meTextArr[ i ],'status':true};
+            meTextObj.push(temp);
+        }
+        for(let j = 0 ; j < sameIndexArr.length; j++)
+        {
+           if(sameIndexArr[ j ] != "")
+           {
+             meTextObj[sameIndexArr[j]].status = false;
+           }
+        }
+```
