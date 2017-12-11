@@ -421,3 +421,5 @@ var date = new Date(str.replace("-", "/").replace("-", "/"));
         }
 	console.log(meTextObj)
 ```
+
+20. 微信小程序canvas画图，用户userInfo图像显示不了，原因是开发者工具没有去掉"校验..."前面的勾选，还有小程序开发设置后台，没有设置downloadFile合法域名，这里是设置用户图像的前面的域名"https://wx.qlogo.cn"
