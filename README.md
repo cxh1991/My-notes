@@ -423,3 +423,28 @@ var date = new Date(str.replace("-", "/").replace("-", "/"));
 ```
 
 20. 微信小程序canvas画图，用户userInfo图像显示不了，原因是开发者工具没有去掉"校验..."前面的勾选，还有小程序开发设置后台，没有设置downloadFile合法域名，这里是设置用户图像的前面的域名"https://wx.qlogo.cn"
+21. 添加数据concat
+```javascript
+//假设这一段是我们要新增的数组
+var newarray = [{
+        name:'增加的数据--'+new Date().getTime() ,
+}];
+//向前--用newarray与this.data.list合拼
+this.data.list = newarray.concat(this.data.list);
+//向后--用this.data.list与newarray合拼
+this.data.list = this.data.list.concat(newarray);
+```
+22. 删除数据splice()删除数据，然后返回被删除的数据
+```javascript
+//删除
+  remove:function (e){
+    var dataset = e.target.dataset;
+    var Index = dataset.index;
+    //通过index识别要删除第几条数据，第二个数据为要删除的项目数量，通常为1
+    this.data.list.splice(Index,1);
+    //渲染数据
+    this.setData({
+        list:this.data.list
+    });
+  }
+```
