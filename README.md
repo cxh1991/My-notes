@@ -448,3 +448,26 @@ this.data.list = this.data.list.concat(newarray);
     });
   }
 ```
+
+23.当前时间跟本周最后一天时间比较
+```javascript
+// 当周最后周日时间
+        function weekLastDay() {
+            var Nowdate = new Date();
+            var WeekFirstDay = new Date(Nowdate - (Nowdate.getDay() - 1) * 86400000);
+            var WeekLastDay = new Date((WeekFirstDay / 1000 + 6 * 86400) * 1000);
+            var f = new Date((WeekFirstDay / 1000 + 6 * 86400) * 1000);
+            var m = Number(WeekLastDay.getMonth()) + 1
+            return WeekLastDay.getFullYear() + "-" + m + "-" + WeekLastDay.getDate();
+        }
+        // 当前时间
+        function WeekNowDay() {
+            var Nowdate = new Date();
+            var n = Nowdate.getFullYear();
+            var y = Nowdate.getMonth() + 1;
+            var r = Nowdate.getDate();
+            return n + '-' + y + '-' + r
+        }
+        var weekLastDay1 = weekLastDay(); //2017-12-24
+        var WeekNowDay1 = WeekNowDay(); //2017-12-21
+```
