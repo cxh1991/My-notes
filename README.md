@@ -471,3 +471,43 @@ this.data.list = this.data.list.concat(newarray);
         var weekLastDay1 = weekLastDay(); //2017-12-24
         var WeekNowDay1 = WeekNowDay(); //2017-12-21
 ```
+24，
+微信小程序：防止多次点击跳转（函数节流）
+```javascript
+function throttle(fn, gapTime) {
+    if (gapTime == null || gapTime == undefined) {
+        gapTime = 1500
+    }
+
+    let _lastTime = null
+
+    // 返回新的函数
+    return function () {
+        let _nowTime = + new Date()
+        if (_nowTime - _lastTime > gapTime || !_lastTime) {
+            fn.apply(this, arguments)   //将this和参数传给原函数
+            _lastTime = _nowTime
+        }
+    }
+}
+module.exports = {
+  throttle: throttle
+}
+
+const util = require('../../utils/util.js')
+
+Page({
+    data: {
+        text: 'tomfriwel'
+    },
+    onLoad: function (options) {
+
+    },
+    tap: util.throttle(function (e) {
+        console.log(this)
+        console.log(e)
+        console.log((new Date()).getSeconds())
+    }, 1000)
+})
+
+```
